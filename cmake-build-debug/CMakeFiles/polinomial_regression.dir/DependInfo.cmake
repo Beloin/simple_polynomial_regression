@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "/home/beloin/Documents/aulas/SEMB/polinomial_regression/main.c" "/home/beloin/Documents/aulas/SEMB/polinomial_regression/cmake-build-debug/CMakeFiles/polinomial_regression.dir/main.c.o"
   "/home/beloin/Documents/aulas/SEMB/polinomial_regression/src/gauss/gauss_method.c" "/home/beloin/Documents/aulas/SEMB/polinomial_regression/cmake-build-debug/CMakeFiles/polinomial_regression.dir/src/gauss/gauss_method.c.o"
+  "/home/beloin/Documents/aulas/SEMB/polinomial_regression/src/simple_polynomial_regression/poly_utils.c" "/home/beloin/Documents/aulas/SEMB/polinomial_regression/cmake-build-debug/CMakeFiles/polinomial_regression.dir/src/simple_polynomial_regression/poly_utils.c.o"
   "/home/beloin/Documents/aulas/SEMB/polinomial_regression/src/simple_polynomial_regression/simple_polynomial_regression.c" "/home/beloin/Documents/aulas/SEMB/polinomial_regression/cmake-build-debug/CMakeFiles/polinomial_regression.dir/src/simple_polynomial_regression/simple_polynomial_regression.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")

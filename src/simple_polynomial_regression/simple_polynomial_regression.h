@@ -10,13 +10,13 @@
  * @param mx Matrix ixj, being i>0 and j=2
  */
 float* find_coefficients(float *mx[], int degree);
-float* find_coefficients_(float x[], float y[], int degree);
+float* calculate_coef(float x[], float y[], int degree, int arr_size);
 /**
  * Predict using coefficients and a new x_value
  * @param coefficients
  * @param x_value
  * @return
  */
-float predict(float coefficients[], float x_value);
+float predict(const float coefficients[], float x_value);
 
 #endif //SIMPLE_POLYNOMIAL_REGRESSION_H

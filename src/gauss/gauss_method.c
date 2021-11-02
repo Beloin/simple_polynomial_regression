@@ -4,8 +4,8 @@
 
 #include "gauss_method.h"
 
-float gauss_method(float *a[], float *b[]){
+float *gauss_method(float *a[], float *b[]){
 }
 
-float gauss_method_unique_mx(float *mx[]){
+float *gauss_method_unique_mx(float *mx[]){
 }

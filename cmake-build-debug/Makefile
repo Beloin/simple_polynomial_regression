@@ -177,6 +177,30 @@ src/gauss/gauss_method.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/polinomial_regression.dir/build.make CMakeFiles/polinomial_regression.dir/src/gauss/gauss_method.c.s
 .PHONY : src/gauss/gauss_method.c.s
 
+src/simple_polynomial_regression/poly_utils.o: src/simple_polynomial_regression/poly_utils.c.o
+.PHONY : src/simple_polynomial_regression/poly_utils.o
+
+# target to build an object file
+src/simple_polynomial_regression/poly_utils.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/polinomial_regression.dir/build.make CMakeFiles/polinomial_regression.dir/src/simple_polynomial_regression/poly_utils.c.o
+.PHONY : src/simple_polynomial_regression/poly_utils.c.o
+
+src/simple_polynomial_regression/poly_utils.i: src/simple_polynomial_regression/poly_utils.c.i
+.PHONY : src/simple_polynomial_regression/poly_utils.i
+
+# target to preprocess a source file
+src/simple_polynomial_regression/poly_utils.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/polinomial_regression.dir/build.make CMakeFiles/polinomial_regression.dir/src/simple_polynomial_regression/poly_utils.c.i
+.PHONY : src/simple_polynomial_regression/poly_utils.c.i
+
+src/simple_polynomial_regression/poly_utils.s: src/simple_polynomial_regression/poly_utils.c.s
+.PHONY : src/simple_polynomial_regression/poly_utils.s
+
+# target to generate assembly for a file
+src/simple_polynomial_regression/poly_utils.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/polinomial_regression.dir/build.make CMakeFiles/polinomial_regression.dir/src/simple_polynomial_regression/poly_utils.c.s
+.PHONY : src/simple_polynomial_regression/poly_utils.c.s
+
 src/simple_polynomial_regression/simple_polynomial_regression.o: src/simple_polynomial_regression/simple_polynomial_regression.c.o
 .PHONY : src/simple_polynomial_regression/simple_polynomial_regression.o
 
@@ -216,6 +240,9 @@ help:
 	@echo "... src/gauss/gauss_method.o"
 	@echo "... src/gauss/gauss_method.i"
 	@echo "... src/gauss/gauss_method.s"
+	@echo "... src/simple_polynomial_regression/poly_utils.o"
+	@echo "... src/simple_polynomial_regression/poly_utils.i"
+	@echo "... src/simple_polynomial_regression/poly_utils.s"
 	@echo "... src/simple_polynomial_regression/simple_polynomial_regression.o"
 	@echo "... src/simple_polynomial_regression/simple_polynomial_regression.i"
 	@echo "... src/simple_polynomial_regression/simple_polynomial_regression.s"

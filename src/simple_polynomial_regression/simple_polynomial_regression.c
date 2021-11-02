@@ -1,16 +1,14 @@
 //
 // Created by beloin on 01/11/2021.
 //
+#include <malloc.h>
 #include "simple_polynomial_regression.h"
+#include "../gauss/gauss_method.h"
+#include "poly_utils.c";
+
 #define NELEMS(x)  (sizeof(x) / sizeof((x)[0]))
 
-float **find_x_y(float **arr);
-float elevate_by(float num, int by);
-float sum_all(float x[], int size);
-float elevate_and_sum_all(float x[], int size, int degree);
-
-int arr_size;
-
+float **find_x_y(float **arr, int size);
 /*
  * Example:
  * [ [1,2], [2, 4] ] -> x = [1, 2]; y = [2, 4]
@@ -19,61 +17,74 @@ int arr_size;
  */
 
 float* find_coefficients(float *mx[], int degree){
-    int i;
+    int i, arr_size;
     float *x, *y, **res;
-    arr_size = NELEMS(arr);
-    res = find_x_y(mx);
+    arr_size = NELEMS(mx);
+    res = find_x_y(mx, arr_size);
     x = res[0];
     y = res[1];
-
+    // free x and y?
+    return calculate_coef(x, y, degree, arr_size);
 }
 
-float* find_coefficients_(float x[], float y[], int degree){
-    int n, quantity, i, ii, el_by;
-    float **x_result, **y_result, *temp;
-    n = arr_size;
+float* calculate_coef(float x[], float y[], int degree, int arr_size){
+    int quantity, i, ii, el_by;
+    float **x_result, **y_result;
     quantity = degree+1;
+
+    // Is needed to initialize?
+    x_result = (float **) malloc(quantity * sizeof (float *));
+    y_result = (float **) malloc(quantity *  sizeof (float *));
+
     for (i=0; i<quantity; i++){
+        x_result[i] = (float *) malloc(arr_size * sizeof (float ));
+        y_result[i] = (float *) malloc(arr_size * sizeof (float ));
+
         for (ii=0; ii < quantity; ii++){
             el_by= i + ii;
-            x_result[i][ii] = elevate_and_sum_all(x, n, el_by);
+            x_result[i][ii] = elevate_and_sum_all(x, arr_size, el_by);
+            el_by = i;
+            y_result[i][ii] = sum_y(y, x, arr_size, el_by);
         }
     }
-
-    x_result[0][0] = n;
-
+    x_result[0][0] = (float) arr_size;
+    return gauss_method(x_result, y_result);
 }
 
-float predict(float coefficients[], float x_value){
-}
-
-float sum_all(float x[], int size){
-    float res = 0;
-    for (int i = 0; i < size; ++i) {
-        res += x[i];
+/**
+ * Predict y value from X.
+ *
+ * Function should be something like this: F(X) = a0 + a1X + a2*X²
+ * @param coefficients [a0, a1, a2, ...]
+ * @param x_value
+ * @return
+ */
+float predict(const float coefficients[], float x_value){
+    int i;
+    float a, res = 0;
+    int arr_size = NELEMS(&coefficients);
+    for (i = 1; i < arr_size; ++i) {
+        a = coefficients[i];
+        res += a * elevate_by(x_value, i);
     }
-    return res;
-}
-
-float elevate_and_sum_all(float x[], int size, int degree){
-    float res = 0, temp;
-    for (int i = 0; i < size; ++i) {
-        temp = x[i];
-        res += elevate_by(temp, degree);
-    }
-    return res;
+    return res + coefficients[0];
 }
 
 
-
-float **find_x_y(float **arr){
+float **find_x_y(float **arr, int size){
     int i;
     float *x, *y;
-    for (i = 0; i<arr_size; i++){
+    x = (float *) malloc(size * sizeof (float));
+    y = (float *) malloc(size * sizeof (float));
+    for (i = 0; i<size; i++){
         float *currentArray = arr[i];
         x[i] = currentArray[0];
         y[i] = currentArray[1];
     }
-    float **ret_arr = {x, y};
+    float **ret_arr = (float **) malloc(2 * sizeof (float));
+    ret_arr[0] = x;
+    ret_arr[1] = y;
+    free(x);
+    free(y);
     return ret_arr;
 }
