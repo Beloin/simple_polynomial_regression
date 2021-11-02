@@ -6,8 +6,6 @@
 #include "../gauss/gauss_method.h"
 #include "../utils/utils.h"
 
-#define NELEMS(x)  (sizeof(x) / sizeof((x)[0]))
-
 float elevate_and_sum_all(const float x[], int size, int degree);
 float sum_y(const float y[], const float x[], int size, int x_degree);
 float **find_x_y(float **arr, int size);
@@ -19,10 +17,9 @@ float **find_x_y(float **arr, int size);
  * For each degree
  */
 
-float* find_coefficients(float *mx[], int degree){
-    int i, arr_size;
+float* find_coefficients(float **mx, int degree, int arr_size){
+    int i;
     float *x, *y, **res;
-    arr_size = NELEMS(&&mx);
     res = find_x_y(mx, arr_size);
     x = res[0];
     y = res[1];
@@ -62,15 +59,15 @@ float* calculate_coef(float x[], float y[], int degree, int arr_size){
  * @param x_value
  * @return
  */
-float predict(const float coefficients[], float x_value){
+float predict(float coefficients[], float x_value, int arr_size){
     int i;
     float a, res = 0;
-    int arr_size = NELEMS(&coefficients);
-    for (i = 1; i < arr_size; ++i) {
+    print_arr(coefficients, arr_size);
+    for (i = 0; i < arr_size; ++i) {
         a = coefficients[i];
         res += a * elevate_by(x_value, i);
     }
-    return res + coefficients[0];
+    return res;
 }
 
 float **find_x_y(float **arr, int size){
@@ -80,6 +77,7 @@ float **find_x_y(float **arr, int size){
     y = (float *) malloc(size * sizeof (float));
     for (i = 0; i<size; i++){
         float *currentArray = arr[i];
+        currentArray[0];
         x[i] = currentArray[0];
         y[i] = currentArray[1];
     }

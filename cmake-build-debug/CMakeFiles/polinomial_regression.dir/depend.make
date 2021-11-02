@@ -6,7 +6,8 @@ CMakeFiles/polinomial_regression.dir/main.c.o: \
  ../src/simple_polynomial_regression/simple_polynomial_regression.h
 CMakeFiles/polinomial_regression.dir/src/gauss/gauss_method.c.o: \
  ../src/gauss/gauss_method.c \
- ../src/gauss/gauss_method.h
+ ../src/gauss/gauss_method.h \
+ ../src/utils/utils.h
 CMakeFiles/polinomial_regression.dir/src/simple_polynomial_regression/simple_polynomial_regression.c.o: \
  ../src/gauss/gauss_method.h \
  ../src/simple_polynomial_regression/simple_polynomial_regression.c \

@@ -2,10 +2,14 @@
 // Created by beloin on 01/11/2021.
 //
 
+#include <malloc.h>
 #include "gauss_method.h"
 
 float *gauss_method(float *a[], float *b[]){
-    float arr[] = {12.12, 21.0,12.45};
+    float *arr = (float *) malloc(3 * sizeof (float));
+    arr[0] = 0;
+    arr[1] = 0;
+    arr[2] = 1;
     return arr;
 }
 

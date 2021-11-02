@@ -6,4 +6,6 @@
 #define POLINOMIAL_REGRESSION_UTILS_H
 
 float elevate_by(float num, int by);
+void print_arr(float *arr, int arr_size);
+
 #endif //POLINOMIAL_REGRESSION_UTILS_H
