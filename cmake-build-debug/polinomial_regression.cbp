@@ -85,9 +85,6 @@
 		<Unit filename="/home/beloin/Documents/aulas/SEMB/polinomial_regression/src/gauss/gauss_method.h">
 			<Option target="polinomial_regression"/>
 		</Unit>
-		<Unit filename="/home/beloin/Documents/aulas/SEMB/polinomial_regression/src/simple_polynomial_regression/poly_utils.c">
-			<Option target="polinomial_regression"/>
-		</Unit>
 		<Unit filename="/home/beloin/Documents/aulas/SEMB/polinomial_regression/src/simple_polynomial_regression/simple_polynomial_regression.c">
 			<Option target="polinomial_regression"/>
 		</Unit>

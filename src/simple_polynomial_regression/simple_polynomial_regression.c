@@ -4,11 +4,14 @@
 #include <malloc.h>
 #include "simple_polynomial_regression.h"
 #include "../gauss/gauss_method.h"
-#include "poly_utils.c"
+#include "../utils/utils.h"
 
 #define NELEMS(x)  (sizeof(x) / sizeof((x)[0]))
 
+float elevate_and_sum_all(const float x[], int size, int degree);
+float sum_y(const float y[], const float x[], int size, int x_degree);
 float **find_x_y(float **arr, int size);
+
 /*
  * Example:
  * [ [1,2], [2, 4] ] -> x = [1, 2]; y = [2, 4]
@@ -19,7 +22,7 @@ float **find_x_y(float **arr, int size);
 float* find_coefficients(float *mx[], int degree){
     int i, arr_size;
     float *x, *y, **res;
-    arr_size = NELEMS(mx);
+    arr_size = NELEMS(&&mx);
     res = find_x_y(mx, arr_size);
     x = res[0];
     y = res[1];
@@ -87,3 +90,25 @@ float **find_x_y(float **arr, int size){
     free(y);
     return ret_arr;
 }
+
+
+float sum_y(const float y[], const float x[], int size, int x_degree){
+    float res = 0, temp_x, temp_y;
+    for (int i = 0; i < size; ++i) {
+        temp_x = x[i];
+        temp_y = y[i];
+        temp_x = elevate_by(temp_x, x_degree);
+        res += temp_x * temp_y;
+    }
+    return res;
+}
+
+float elevate_and_sum_all(const float x[], int size, int degree){
+    float res = 0, temp;
+    for (int i = 0; i < size; ++i) {
+        temp = x[i];
+        res += elevate_by(temp, degree);
+    }
+    return res;
+}
+
