@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/polinomial_regression.dir/src/gauss/gauss_method.c.o"
   "CMakeFiles/polinomial_regression.dir/src/simple_polynomial_regression/poly_utils.c.o"
   "CMakeFiles/polinomial_regression.dir/src/simple_polynomial_regression/simple_polynomial_regression.c.o"
+  "CMakeFiles/polinomial_regression.dir/src/utils/utils.c.o"
   "polinomial_regression"
   "polinomial_regression.pdb"
 )

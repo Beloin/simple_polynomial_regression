@@ -4,7 +4,7 @@
 #include <malloc.h>
 #include "simple_polynomial_regression.h"
 #include "../gauss/gauss_method.h"
-#include "poly_utils.c";
+#include "poly_utils.c"
 
 #define NELEMS(x)  (sizeof(x) / sizeof((x)[0]))
 
@@ -69,7 +69,6 @@ float predict(const float coefficients[], float x_value){
     }
     return res + coefficients[0];
 }
-
 
 float **find_x_y(float **arr, int size){
     int i;

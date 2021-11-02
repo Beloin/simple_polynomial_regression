@@ -94,6 +94,12 @@
 		<Unit filename="/home/beloin/Documents/aulas/SEMB/polinomial_regression/src/simple_polynomial_regression/simple_polynomial_regression.h">
 			<Option target="polinomial_regression"/>
 		</Unit>
+		<Unit filename="/home/beloin/Documents/aulas/SEMB/polinomial_regression/src/utils/utils.c">
+			<Option target="polinomial_regression"/>
+		</Unit>
+		<Unit filename="/home/beloin/Documents/aulas/SEMB/polinomial_regression/src/utils/utils.h">
+			<Option target="polinomial_regression"/>
+		</Unit>
 		<Unit filename="/home/beloin/Documents/aulas/SEMB/polinomial_regression/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
