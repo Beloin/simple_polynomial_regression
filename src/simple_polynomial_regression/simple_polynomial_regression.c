@@ -62,7 +62,6 @@ float* calculate_coef(float x[], float y[], int degree, int arr_size){
 float predict(float coefficients[], float x_value, int arr_size){
     int i;
     float a, res = 0;
-    print_arr(coefficients, arr_size);
     for (i = 0; i < arr_size; ++i) {
         a = coefficients[i];
         res += a * elevate_by(x_value, i);
@@ -84,8 +83,6 @@ float **find_x_y(float **arr, int size){
     float **ret_arr = (float **) malloc(2 * sizeof (float));
     ret_arr[0] = x;
     ret_arr[1] = y;
-    free(x);
-    free(y);
     return ret_arr;
 }
 

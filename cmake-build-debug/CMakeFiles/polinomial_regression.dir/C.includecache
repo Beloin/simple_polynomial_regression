@@ -6,23 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/home/beloin/Documents/aulas/SEMB/polinomial_regression/main.c
-stdio.h
--
-malloc.h
--
-./src/simple_polynomial_regression/simple_polynomial_regression.h
-/home/beloin/Documents/aulas/SEMB/polinomial_regression/src/simple_polynomial_regression/simple_polynomial_regression.h
+/home/beloin/Documents/aulas/SEMB/polinomial_regression/src/gauss/gauss_method.h
 
-/home/beloin/Documents/aulas/SEMB/polinomial_regression/src/gauss/gauss_method.c
+/home/beloin/Documents/aulas/SEMB/polinomial_regression/src/simple_polynomial_regression/simple_polynomial_regression.c
 malloc.h
 -
-gauss_method.h
+simple_polynomial_regression.h
+/home/beloin/Documents/aulas/SEMB/polinomial_regression/src/simple_polynomial_regression/simple_polynomial_regression.h
+../gauss/gauss_method.h
 /home/beloin/Documents/aulas/SEMB/polinomial_regression/src/gauss/gauss_method.h
 ../utils/utils.h
 /home/beloin/Documents/aulas/SEMB/polinomial_regression/src/utils/utils.h
-
-/home/beloin/Documents/aulas/SEMB/polinomial_regression/src/gauss/gauss_method.h
 
 /home/beloin/Documents/aulas/SEMB/polinomial_regression/src/simple_polynomial_regression/simple_polynomial_regression.h
 
