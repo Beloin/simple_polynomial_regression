@@ -25,17 +25,6 @@ int main() {
     arr[4][0] =  (float) 5;
     arr[4][1] = (float) 25;
 
-    {
-        {1,1},
-        {2,4},
-        {3,9},
-        {4,16},
-        {5,25},
-    }
-
-    {1,2,3,4,5}
-    {1,4,...}
-
     float *coef = find_coefficients(arr, degree, arr_size);
     float pred = predict(coef_size, coef, x_pred);
     printf("\nYour predicted value is: %.2f", pred);

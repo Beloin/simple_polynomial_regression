@@ -10,12 +10,6 @@ float elevate_and_sum_all(const float x[], int size, int degree);
 float sum_y(const float y[], const float x[], int size, int x_degree);
 void find_x_y(int arr_size, float **arr, float inject_matrix[2][arr_size]);
 
-/*
- * Example:
- * [ [1,2], [2, 4] ] -> x = [1, 2]; y = [2, 4]
- *
- * For each degree
- */
 
 float* find_coefficients(float **mx, int degree, int arr_size){
     float *x, *y, res[2][arr_size];
@@ -26,8 +20,7 @@ float* find_coefficients(float **mx, int degree, int arr_size){
 }
 
 float* calculate_coef(float x[], float y[], int degree, int arr_size){
-    int quantity, i, ii, el_by;
-    quantity = degree+1;
+    int quantity = degree+1, i, ii, el_by;
     float x_result[quantity][quantity], y_result[quantity][quantity];
     for (i=0; i<quantity; i++){
         for (ii=0; ii < quantity; ii++){
@@ -42,14 +35,6 @@ float* calculate_coef(float x[], float y[], int degree, int arr_size){
     return gauss_method(quantity, x_result, y_result);
 }
 
-/**
- * Predict y value from X.
- *
- * Function should be something like this: F(X) = a0 + a1X + a2*X²
- * @param coefficients [a0, a1, a2, ...]
- * @param x_value
- * @return
- */
 float predict(int arr_size, float coefficients[arr_size], float x_value){
     int i;
     float a, res = 0;
@@ -60,6 +45,10 @@ float predict(int arr_size, float coefficients[arr_size], float x_value){
     return res;
 }
 
+/*
+ * Example:
+ * [ [1,2], [2, 4] ] -> x = [1, 2]; y = [2, 4]
+ */
 void find_x_y(int arr_size, float **arr, float inject_matrix[2][arr_size]){
     int i;
     float x[arr_size], y[arr_size];

@@ -13,8 +13,9 @@ float* find_coefficients(float **mx, int degree, int arr_size);
 float* calculate_coef(float x[], float y[], int degree, int arr_size);
 /**
  * Predict using coefficients and a new x_value
+ * Function should be something like this: F(X) = a0 + a1X + a2*X²
  * @param coefficients
- * @param x_value
+ * @param x_value [a0, a1, a2, ...]
  * @return
  */
 float predict( int arr_size, float coefficients[arr_size], float x_value);
