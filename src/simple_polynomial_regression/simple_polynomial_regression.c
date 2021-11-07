@@ -39,7 +39,7 @@ float* calculate_coef(float x[], float y[], int degree, int arr_size){
     }
     print_matrix(quantity, quantity, x_result);
     x_result[0][0] = (float) arr_size;
-    return gauss_method(quantity, quantity, x_result, y_result);
+    return gauss_method(quantity, x_result, y_result);
 }
 
 /**
