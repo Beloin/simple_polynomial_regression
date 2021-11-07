@@ -28,7 +28,7 @@ int main() {
 
 
     float *coef = find_coefficients(arr, degree, arr_size);
-    float pred = predict(coef, x_pred, coef_size);
-    printf("Your predicted value is: %.2f", pred);
+    float pred = predict(coef_size, coef, x_pred);
+    printf("\nYour predicted value is: %.2f", pred);
     return 0;
 }

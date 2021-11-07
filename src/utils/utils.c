@@ -14,8 +14,22 @@ float elevate_by(float num, int by){
 }
 
 void print_arr(float *arr, int arr_size){
+    printf("{ ");
     for (int i = 0; i < arr_size; ++i) {
-        printf("Array[%d] = %.2f", i, arr[i]);
-        printf("\n");
+        if (i ==0) printf("%.2f", i, arr[i]);
+        else printf(", %.2f", i, arr[i]);
     }
+    printf(" }");
+}
+
+void print_matrix(int i, int j, float arr[i][j]){
+    printf("{ \n");
+    for (int k=0; k < i; k++){
+        float *mat1 = arr[k];
+        printf("  ");
+        print_arr(mat1, j);
+        if (k < i-1) printf(",\n");
+    }
+    printf("\n");
+    printf("}");
 }

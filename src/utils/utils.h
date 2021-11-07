@@ -7,5 +7,6 @@
 
 float elevate_by(float num, int by);
 void print_arr(float *arr, int arr_size);
+void print_matrix(int i, int j, float arr[i][j]);
 
 #endif //POLINOMIAL_REGRESSION_UTILS_H

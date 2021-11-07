@@ -17,6 +17,6 @@ float* calculate_coef(float x[], float y[], int degree, int arr_size);
  * @param x_value
  * @return
  */
-float predict(float coefficients[], float x_value, int arr_size);
+float predict( int arr_size, float coefficients[arr_size], float x_value);
 
 #endif //SIMPLE_POLYNOMIAL_REGRESSION_H

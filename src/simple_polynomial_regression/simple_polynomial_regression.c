@@ -8,7 +8,7 @@
 
 float elevate_and_sum_all(const float x[], int size, int degree);
 float sum_y(const float y[], const float x[], int size, int x_degree);
-float **find_x_y(float **arr, int size);
+void find_x_y(int arr_size, float **arr, float inject_matrix[2][arr_size]);
 
 /*
  * Example:
@@ -18,28 +18,18 @@ float **find_x_y(float **arr, int size);
  */
 
 float* find_coefficients(float **mx, int degree, int arr_size){
-    int i;
-    float *x, *y, **res;
-    res = find_x_y(mx, arr_size);
+    float *x, *y, res[2][arr_size];
+    find_x_y(arr_size, mx, res);
     x = res[0];
     y = res[1];
-    // free x and y?
     return calculate_coef(x, y, degree, arr_size);
 }
 
 float* calculate_coef(float x[], float y[], int degree, int arr_size){
     int quantity, i, ii, el_by;
-    float **x_result, **y_result;
     quantity = degree+1;
-
-    // Is needed to initialize?
-    x_result = (float **) malloc(quantity * sizeof (float *));
-    y_result = (float **) malloc(quantity *  sizeof (float *));
-
+    float x_result[quantity][quantity], y_result[quantity][quantity];
     for (i=0; i<quantity; i++){
-        x_result[i] = (float *) malloc(arr_size * sizeof (float ));
-        y_result[i] = (float *) malloc(arr_size * sizeof (float ));
-
         for (ii=0; ii < quantity; ii++){
             el_by= i + ii;
             x_result[i][ii] = elevate_and_sum_all(x, arr_size, el_by);
@@ -47,8 +37,9 @@ float* calculate_coef(float x[], float y[], int degree, int arr_size){
             y_result[i][ii] = sum_y(y, x, arr_size, el_by);
         }
     }
+    print_matrix(quantity, quantity, x_result);
     x_result[0][0] = (float) arr_size;
-    return gauss_method(x_result, y_result);
+    return gauss_method(quantity, quantity, x_result, y_result);
 }
 
 /**
@@ -59,7 +50,7 @@ float* calculate_coef(float x[], float y[], int degree, int arr_size){
  * @param x_value
  * @return
  */
-float predict(float coefficients[], float x_value, int arr_size){
+float predict(int arr_size, float coefficients[arr_size], float x_value){
     int i;
     float a, res = 0;
     for (i = 0; i < arr_size; ++i) {
@@ -69,21 +60,19 @@ float predict(float coefficients[], float x_value, int arr_size){
     return res;
 }
 
-float **find_x_y(float **arr, int size){
+void find_x_y(int arr_size, float **arr, float inject_matrix[2][arr_size]){
     int i;
-    float *x, *y;
-    x = (float *) malloc(size * sizeof (float));
-    y = (float *) malloc(size * sizeof (float));
-    for (i = 0; i<size; i++){
+    float x[arr_size], y[arr_size];
+    for (i = 0; i < arr_size; i++){
         float *currentArray = arr[i];
         currentArray[0];
         x[i] = currentArray[0];
         y[i] = currentArray[1];
     }
-    float **ret_arr = (float **) malloc(2 * sizeof (float));
-    ret_arr[0] = x;
-    ret_arr[1] = y;
-    return ret_arr;
+    for (int j = 0; j < arr_size; ++j) {
+        inject_matrix[0][j] = x[j];
+        inject_matrix[1][j] = y[j];
+    }
 }
 
 
