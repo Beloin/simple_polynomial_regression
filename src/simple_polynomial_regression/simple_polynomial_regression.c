@@ -20,17 +20,23 @@ float* find_coefficients(float **mx, int degree, int arr_size){
 }
 
 float* calculate_coef(float x[], float y[], int degree, int arr_size){
-    int quantity = degree+1, i, ii, el_by;
-    float x_result[quantity][quantity], y_result[quantity][quantity];
+    int quantity = degree+1, i, ii, y_ii = 0, elevate_by;
+    float x_result[quantity][quantity], y_result[1][quantity];
+    float augmented_matrix[quantity][quantity+1];
     for (i=0; i<quantity; i++){
         for (ii=0; ii < quantity; ii++){
-            el_by= i + ii;
-            x_result[i][ii] = elevate_and_sum_all(x, arr_size, el_by);
-            el_by = i;
-            y_result[i][ii] = sum_y(y, x, arr_size, el_by);
+            elevate_by= i + ii;
+            x_result[i][ii] = elevate_and_sum_all(x, arr_size, elevate_by);
+
         }
+        elevate_by = i;
+        y_result[0][i] = sum_y(y, x, arr_size, elevate_by);
     }
     print_matrix(quantity, quantity, x_result);
+    printf("\n");
+    print_matrix(1, quantity, y_result);
+    printf("\n");
+    print_arr(y_result, quantity);
     x_result[0][0] = (float) arr_size;
     return gauss_method(quantity, x_result, y_result);
 }

@@ -13,5 +13,11 @@ float *gauss_method(int arr_size, float a[arr_size][arr_size], float b[1][arr_si
     return arr;
 }
 
-float *gauss_method_unique_mx(float *mx[]){
+void join_mx(int n, float a[n][n], float b[1][n], float inject_mx[n][n+1]){
+    for (int i = 0; i < n; ++i) {
+
+    }
+}
+
+float *gauss_method_unique_mx(int n, float mx[n][n+1]){
 }
