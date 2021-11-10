@@ -9,7 +9,7 @@ def main():
         y = fun(x)
         results.append([x, y])
 
-    file_name = f'csv_examples/csv_{int(random.uniform(0,7000))}.csv'
+    file_name = f'csv_examples/csv_{str(int(random.uniform(0,7000))).zfill(4)}.csv'
     with open(file_name, 'w') as fl:
         for res in results:
             # res = map(lambda it: str(it), res)
