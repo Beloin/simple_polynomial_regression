@@ -1,3 +1,0 @@
-/home/beloin/Documents/aulas/SEMB/polinomial_regression/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/beloin/Documents/aulas/SEMB/polinomial_regression/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/beloin/Documents/aulas/SEMB/polinomial_regression/cmake-build-debug/CMakeFiles/polinomial_regression.dir
