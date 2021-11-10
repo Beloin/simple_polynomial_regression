@@ -12,14 +12,15 @@ void find_x_y(int arr_size, float **arr, float inject_matrix[2][arr_size]);
 
 
 float* find_coefficients(float **mx, int degree, int arr_size){
-    float *x, *y, res[2][arr_size];
+    float *x, *y, res[2][arr_size], response[degree+1];
     find_x_y(arr_size, mx, res);
     x = res[0];
     y = res[1];
-    return calculate_coef(x, y, degree, arr_size);
+    calculate_coef(x, y, degree, arr_size, response);
+    return response;
 }
 
-float* calculate_coef(float x[], float y[], int degree, int arr_size){
+void calculate_coef(float x[], float y[], int degree, int arr_size, float buffer[degree + 1]) {
     int quantity = degree+1, i, ii, y_ii = 0, elevate_by;
     float x_result[quantity][quantity], y_result[1][quantity];
     float augmented_matrix[quantity][quantity+1];
@@ -38,7 +39,7 @@ float* calculate_coef(float x[], float y[], int degree, int arr_size){
     printf("\n");
     print_arr(y_result, quantity);
     x_result[0][0] = (float) arr_size;
-    return gauss_method(quantity, x_result, y_result);
+    gauss_method(quantity, x_result, y_result, buffer);
 }
 
 float predict(int arr_size, float coefficients[arr_size], float x_value){

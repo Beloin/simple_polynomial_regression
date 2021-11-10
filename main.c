@@ -2,6 +2,8 @@
 #include <malloc.h>
 
 #include "./src/simple_polynomial_regression/simple_polynomial_regression.h"
+#include "src/gauss/gauss_method.h"
+#include "src/utils/utils.h"
 
 int main() {
     int degree = 2, coef_size = degree+1, arr_size = 5;

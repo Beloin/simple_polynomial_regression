@@ -12,7 +12,7 @@
  * @param b
  * @return
  */
-float *gauss_method(int arr_size, float a[arr_size][arr_size], float b[1][arr_size]);
+void gauss_method(int arr_size, float a[arr_size][arr_size], float b[arr_size][1], float buffer[arr_size+1]);
 void gauss_method_unique_mx(int n, float mx[n][n+1], float inject[n]);
 
 #endif //POLINOMIAL_REGRESSION_GAUSS_METHOD_H
