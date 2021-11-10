@@ -4,12 +4,12 @@ import random
 def main():
     fun = generate_y_fun(2)
     results = []
-    for i in range(2):
+    for i in range(250):
         x = random.uniform(1, 100)
         y = fun(x)
         results.append([x, y])
 
-    file_name = f'csv_examples/csv_{random.uniform(0,7000)}.csv'
+    file_name = f'csv_examples/csv_{int(random.uniform(0,7000))}.csv'
     with open(file_name, 'w') as fl:
         for res in results:
             # res = map(lambda it: str(it), res)

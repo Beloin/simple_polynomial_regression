@@ -2,7 +2,6 @@
 // Created by beloin on 01/11/2021.
 //
 
-#include <malloc.h>
 #include "gauss_method.h"
 
 void join_mx(int n, float a[n][n], float b[n][1], float inject_mx[n][n+1]);

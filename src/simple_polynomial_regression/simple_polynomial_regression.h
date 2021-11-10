@@ -9,7 +9,7 @@
  * Use this function to find coefficients for the X -> Y polynomial regression.
  * @param mx Matrix ixj, being i>0 and j=2
  */
-void find_coefficients(float **mx, int degree, int arr_size, float buffer[degree+1]);
+void find_coefficients(int arr_size, float mx[arr_size][2], int degree, float buffer[degree + 1]);
 void calculate_coef(float x[], float y[], int degree, int arr_size, float buffer[degree + 1]);
 /**
  * Predict using coefficients and a new x_value

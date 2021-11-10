@@ -8,10 +8,10 @@
 
 float elevate_and_sum_all(const float x[], int size, int degree);
 float sum_y(const float y[], const float x[], int size, int x_degree);
-void find_x_y(int arr_size, float **arr, float inject_matrix[2][arr_size]);
+void find_x_y(int arr_size, float arr[arr_size][2], float inject_matrix[2][arr_size]);
 
 
-void find_coefficients(float **mx, int degree, int arr_size, float buffer[degree + 1]){
+void find_coefficients(int arr_size, float mx[arr_size][2], int degree, float buffer[degree + 1]) {
     float *x, *y, res[2][arr_size];
     find_x_y(arr_size, mx, res);
     x = res[0];
@@ -20,7 +20,7 @@ void find_coefficients(float **mx, int degree, int arr_size, float buffer[degree
 }
 
 void calculate_coef(float x[], float y[], int degree, int arr_size, float buffer[degree + 1]) {
-    int quantity = degree+1, i, ii, y_ii = 0, elevate_by;
+    int quantity = degree+1, i, ii, elevate_by;
     float x_result[quantity][quantity], y_result[1][quantity];
     for (i=0; i<quantity; i++){
         for (ii=0; ii < quantity; ii++){
@@ -48,12 +48,11 @@ float predict(int arr_size, float coefficients[arr_size], float x_value) {
  * Example:
  * [ [1,2], [2, 4] ] -> x = [1, 2]; y = [2, 4]
  */
-void find_x_y(int arr_size, float **arr, float inject_matrix[2][arr_size]){
+void find_x_y(int arr_size, float arr[arr_size][2], float inject_matrix[2][arr_size]){
     int i;
-    float x[arr_size], y[arr_size];
+    float x[arr_size], y[arr_size], *currentArray ;
     for (i = 0; i < arr_size; i++){
-        float *currentArray = arr[i];
-        currentArray[0];
+        currentArray = arr[i];
         x[i] = currentArray[0];
         y[i] = currentArray[1];
     }

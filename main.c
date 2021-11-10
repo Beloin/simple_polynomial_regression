@@ -1,35 +1,14 @@
 #include <stdio.h>
-#include <malloc.h>
-
 #include "./src/simple_polynomial_regression/simple_polynomial_regression.h"
-#include "src/gauss/gauss_method.h"
-#include "src/utils/utils.h"
+#include "src/csv_reader/csv_reader.h"
 
 float polynomial_predict(int n, int degree, float arr[n][2], float x_pred);
 
 int main() {
-    int degree = 2, arr_size = 5;
+    int degree = 2;
     float x_pred = 6;
-    float **arr = (float **) malloc(arr_size* sizeof (float *));
-
-    arr[0] = (float *) malloc(2 * sizeof (float));
-    arr[1] = (float *) malloc(2 * sizeof (float));
-    arr[2] = (float *) malloc(2 * sizeof (float));
-    arr[3] = (float *) malloc(2 * sizeof (float));
-    arr[4] = (float *) malloc(2 * sizeof (float));
-
-    arr[0][0] =  (float) 1;
-    arr[0][1] = (float) 1;
-    arr[1][0] =  (float) 2;
-    arr[1][1] = (float) 4;
-    arr[2][0] =  (float) 3;
-    arr[2][1] = (float) 9;
-    arr[3][0] =  (float) 4;
-    arr[3][1] = (float) 16;
-    arr[4][0] =  (float) 5;
-    arr[4][1] = (float) 25;
-
-    float pred = polynomial_predict(arr_size, degree, arr, x_pred);
+    Data_ dt = read_csv("csv_5534.csv");
+    float pred = polynomial_predict(dt.i, degree, dt.dot, x_pred);
     printf("Your predicted value is: %.2f", pred);
     return 0;
 }
@@ -37,6 +16,6 @@ int main() {
 float polynomial_predict(int n, int degree, float arr[n][2], float x_pred){
     int coef_size = degree+1;
     float coef[coef_size];
-    find_coefficients(arr, degree, n, coef);
+    find_coefficients(n, arr, degree, coef);
     return predict(coef_size, coef, x_pred);
 }
