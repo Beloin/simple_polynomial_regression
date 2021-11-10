@@ -1,9 +1,12 @@
 import random
 
+global_coef = {}
+
 
 def main():
     fun = generate_y_fun(2)
     results = []
+    print(global_coef['coef'])
     for i in range(250):
         x = random.uniform(1, 100)
         y = fun(x)
@@ -26,6 +29,8 @@ def generate_y_fun(degree: int):
     for i in range(degree):
         ran_value = random.uniform(0, 100)
         coef.append(ran_value)
+
+    global_coef['coef'] = coef
 
     def fun(x):
         res = 0
