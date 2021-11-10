@@ -5,8 +5,10 @@
 #include "src/gauss/gauss_method.h"
 #include "src/utils/utils.h"
 
+float polynomial_predict(int n, int degree, float arr[n][2], float x_pred);
+
 int main() {
-    int degree = 2, coef_size = degree+1, arr_size = 5;
+    int degree = 2, arr_size = 5;
     float x_pred = 6;
     float **arr = (float **) malloc(arr_size* sizeof (float *));
 
@@ -27,8 +29,14 @@ int main() {
     arr[4][0] =  (float) 5;
     arr[4][1] = (float) 25;
 
-    float *coef = find_coefficients(arr, degree, arr_size);
-    float pred = predict(coef_size, coef, x_pred);
-    printf("\nYour predicted value is: %.2f", pred);
+    float pred = polynomial_predict(arr_size, degree, arr, x_pred);
+    printf("Your predicted value is: %.2f", pred);
     return 0;
+}
+
+float polynomial_predict(int n, int degree, float arr[n][2], float x_pred){
+    int coef_size = degree+1;
+    float coef[coef_size];
+    find_coefficients(arr, degree, n, coef);
+    return predict(coef_size, coef, x_pred);
 }

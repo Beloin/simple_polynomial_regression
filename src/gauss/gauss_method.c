@@ -32,28 +32,17 @@ void gauss_method_unique_mx(int n, float mx[n][n+1], float inject[n]){
 }
 
 void convert_triangle(int n, float mx[][n + 1]){
-    int i,j,x,y,k;
+    int i, ii, iii;
     float ratio;
     for( i=0;i<n;i++)
     {
-        for(j=0;j<n;j++)
+        for(ii=0; ii < n; ii++)
         {
-            if(j>i)
+            if(ii > i)
             {
-                ratio= mx[j][i] / mx[i][i];
-                for(k=0;k<n+1;k++)
-                    mx[j][k]= mx[j][k] - (ratio * mx[i][k]);
-
-                //print the Matrix after changed row (Intermediate forms)
-                printf("Intermediate forms:\n");
-                for( x=0;x<n;x++)
-                {
-                    for(y=0;y<n+1;y++)
-                        printf("%.2f ", mx[x][y]);
-                    printf("\n");
-                }
-                printf("\n");
-
+                ratio= mx[ii][i] / mx[i][i];
+                for(iii=0; iii < n + 1; iii++)
+                    mx[ii][iii]= mx[ii][iii] - (ratio * mx[i][iii]);
             }
         }
     }

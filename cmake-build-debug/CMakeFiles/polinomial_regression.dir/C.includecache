@@ -18,12 +18,6 @@ src/gauss/gauss_method.h
 src/utils/utils.h
 /home/beloin/Documents/aulas/SEMB/polinomial_regression/src/utils/utils.h
 
-/home/beloin/Documents/aulas/SEMB/polinomial_regression/src/gauss/gauss_method.c
-malloc.h
--
-gauss_method.h
-/home/beloin/Documents/aulas/SEMB/polinomial_regression/src/gauss/gauss_method.h
-
 /home/beloin/Documents/aulas/SEMB/polinomial_regression/src/gauss/gauss_method.h
 
 /home/beloin/Documents/aulas/SEMB/polinomial_regression/src/simple_polynomial_regression/simple_polynomial_regression.h
