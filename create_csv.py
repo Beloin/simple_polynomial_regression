@@ -14,8 +14,8 @@ def main():
         for res in results:
             # res = map(lambda it: str(it), res)
             for item in range(len(res)):
-                res[item] = str(res[item])
-                fl.write(res[item])
+                temp = str(res[item])
+                fl.write(temp)
                 if item != len(res)-1: fl.write(',')
             fl.write('\n')
 
