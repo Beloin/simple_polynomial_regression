@@ -19,7 +19,7 @@ float elevate_and_sum_all(const float x[], int size, int degree);
  * @param x
  * @param size
  * @param x_degree
- * @return
+ * @return value of the sum function (E(y*X^n))
  */
 float sum_y(const float y[], const float x[], int size, int x_degree);
 /**

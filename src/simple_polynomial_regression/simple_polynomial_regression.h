@@ -15,7 +15,7 @@
 void find_coefficients(int arr_size, float mx[arr_size][2], int degree, float buffer[degree + 1]);
 /**
  * Predict using coefficients and a new x_value
- * Function should be something like this: F(X) = a0 + a1X + a2*X²
+ * Function is something like: F(X) = a0 + a1X + a2*X²
  * @param coefficients [a0, a1, a2, ...]
  * @param x_value
  * @return
