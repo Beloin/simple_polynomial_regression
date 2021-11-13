@@ -22,7 +22,7 @@ void convert_triangle(int n, float mx[][n + 1]);
  * Apply back substitution to matrix.
  * @param n
  * @param mx
- * @param buffer
+ * @param buffer where is injected the matrix after back substitution
  */
 void back_subs(int n, float mx[][n + 1], float buffer[]);
 

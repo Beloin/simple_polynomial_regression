@@ -1,6 +1,9 @@
 //
 // Created by beloin on 01/11/2021.
 //
+// Simple Polynomial functions, in order should always be called fist the function to
+// find coefficients and then the predict function
+//
 
 #ifndef SIMPLE_POLYNOMIAL_REGRESSION_H
 #define SIMPLE_POLYNOMIAL_REGRESSION_H
