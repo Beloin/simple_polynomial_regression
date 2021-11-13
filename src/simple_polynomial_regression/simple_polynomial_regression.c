@@ -1,15 +1,43 @@
 //
 // Created by beloin on 01/11/2021.
 //
-#include <malloc.h>
 #include "simple_polynomial_regression.h"
 #include "../gauss/gauss_method.h"
 #include "../utils/utils.h"
 
+/**
+ * Specific function to sum and elevate x to inject into augmented matrix.
+ * @param x
+ * @param size
+ * @param degree
+ * @return
+ */
 float elevate_and_sum_all(const float x[], int size, int degree);
+/**
+ * Specific function to sum y values to inject into augmented matrix.
+ * @param y
+ * @param x
+ * @param size
+ * @param x_degree
+ * @return
+ */
 float sum_y(const float y[], const float x[], int size, int x_degree);
+/**
+ * Retrieve x and y from matrix.
+ * @param arr_size
+ * @param arr
+ * @param inject_matrix
+ */
 void find_x_y(int arr_size, float arr[arr_size][2], float inject_matrix[2][arr_size]);
-
+/**
+ * Private function that calculate the coefficients from x,y and degree.
+ * @param x
+ * @param y
+ * @param degree
+ * @param arr_size
+ * @param buffer
+ */
+void calculate_coef(float x[], float y[], int degree, int arr_size, float buffer[degree + 1]);
 
 void find_coefficients(int arr_size, float mx[arr_size][2], int degree, float buffer[degree + 1]) {
     float *x, *y, res[2][arr_size];
@@ -46,7 +74,7 @@ float predict(int arr_size, float coefficients[arr_size], float x_value) {
 
 /*
  * Example:
- * [ [1,2], [2, 4] ] -> x = [1, 2]; y = [2, 4]
+ * [ [1,6], [2, 7] ] -> x = [1, 2]; y = [6, 7]
  */
 void find_x_y(int arr_size, float arr[arr_size][2], float inject_matrix[2][arr_size]){
     int i;

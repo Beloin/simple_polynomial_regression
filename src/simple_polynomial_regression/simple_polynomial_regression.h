@@ -10,12 +10,11 @@
  * @param mx Matrix ixj, being i>0 and j=2
  */
 void find_coefficients(int arr_size, float mx[arr_size][2], int degree, float buffer[degree + 1]);
-void calculate_coef(float x[], float y[], int degree, int arr_size, float buffer[degree + 1]);
 /**
  * Predict using coefficients and a new x_value
  * Function should be something like this: F(X) = a0 + a1X + a2*X²
- * @param coefficients
- * @param x_value [a0, a1, a2, ...]
+ * @param coefficients [a0, a1, a2, ...]
+ * @param x_value
  * @return
  */
 float predict(int arr_size, float coefficients[arr_size], float x_value);

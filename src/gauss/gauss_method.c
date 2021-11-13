@@ -4,8 +4,26 @@
 
 #include "gauss_method.h"
 
+/**
+ * Joins a and b into one unique augmented matrix, being always [n][n+1]
+ * @param n
+ * @param a
+ * @param b
+ * @param inject_mx
+ */
 void join_mx(int n, float a[n][n], float b[n][1], float inject_mx[n][n+1]);
+/**
+ * Transforms matrix into Triangle format.
+ * @param n
+ * @param mx
+ */
 void convert_triangle(int n, float mx[][n + 1]);
+/**
+ * Apply back substitution to matrix.
+ * @param n
+ * @param mx
+ * @param buffer
+ */
 void back_subs(int n, float mx[][n + 1], float buffer[]);
 
 void gauss_method(int arr_size, float a[arr_size][arr_size], float b[arr_size][1], float buffer[arr_size+1]){
