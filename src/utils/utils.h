@@ -24,6 +24,6 @@ void print_arr(float *arr, int arr_size);
  * @param j
  * @param arr
  */
-void print_matrix(int i, int j, float arr[i][j]);
+void print_matrix(int i, int j, float *arr[]);
 
 #endif //POLINOMIAL_REGRESSION_UTILS_H

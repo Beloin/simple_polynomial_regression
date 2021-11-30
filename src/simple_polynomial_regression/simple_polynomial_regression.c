@@ -28,7 +28,7 @@ float sum_y(const float y[], const float x[], int size, int x_degree);
  * @param arr
  * @param inject_matrix
  */
-void find_x_y(int arr_size, float arr[arr_size][2], float inject_matrix[2][arr_size]);
+void find_x_y(int arr_size, float **arr, float **inject_matrix);
 /**
  * Private function that calculate the coefficients from x,y and degree.
  * @param x
@@ -37,9 +37,9 @@ void find_x_y(int arr_size, float arr[arr_size][2], float inject_matrix[2][arr_s
  * @param arr_size
  * @param buffer
  */
-void calculate_coef(float x[], float y[], int degree, int arr_size, float buffer[degree + 1]);
+void calculate_coef(float x[], float y[], int degree, int arr_size, float *buffer);
 
-void find_coefficients(int arr_size, float mx[arr_size][2], int degree, float buffer[degree + 1]) {
+void find_coefficients(int arr_size, float *mx[2], int degree, float *buffer) {
     float *x, *y, res[2][arr_size];
     find_x_y(arr_size, mx, res);
     x = res[0];
@@ -62,7 +62,7 @@ void calculate_coef(float x[], float y[], int degree, int arr_size, float buffer
     gauss_method(quantity, x_result, y_result, buffer);
 }
 
-float predict(int arr_size, float coefficients[arr_size], float x_value) {
+float predict(int arr_size, float *coefficients, float x_value) {
     int i;
     float a, res = 0;
     for (i = 0; i < arr_size; ++i) {
@@ -76,7 +76,7 @@ float predict(int arr_size, float coefficients[arr_size], float x_value) {
  * Example:
  * [ [1,6], [2, 7] ] -> x = [1, 2]; y = [6, 7]
  */
-void find_x_y(int arr_size, float arr[arr_size][2], float inject_matrix[2][arr_size]){
+void find_x_y(int arr_size, float **arr, float **inject_matrix){
     int i;
     float x[arr_size], y[arr_size], *currentArray ;
     for (i = 0; i < arr_size; i++){

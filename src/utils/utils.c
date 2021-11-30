@@ -22,7 +22,7 @@ void print_arr(float *arr, int arr_size){
     printf(" }");
 }
 
-void print_matrix(int i, int j, float arr[i][j]){
+void print_matrix(int i, int j, float *arr[]){
     printf("{ \n");
     for (int k=0; k < i; k++){
         float *mat1 = arr[k];

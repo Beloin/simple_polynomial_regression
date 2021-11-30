@@ -11,8 +11,10 @@
 /**
  * Use this function to find coefficients for the X -> Y polynomial regression.
  * @param mx Matrix ixj, being i>0 and j=2
+ *
+ * @param buffer
  */
-void find_coefficients(int arr_size, float mx[arr_size][2], int degree, float buffer[degree + 1]);
+void find_coefficients(int arr_size, float *mx[2], int degree, float *buffer);
 /**
  * Predict using coefficients and a new x_value
  * Function is something like: F(X) = a0 + a1X + a2*X²
@@ -20,6 +22,6 @@ void find_coefficients(int arr_size, float mx[arr_size][2], int degree, float bu
  * @param x_value
  * @return
  */
-float predict(int arr_size, float coefficients[arr_size], float x_value);
+float predict(int arr_size, float *coefficients, float x_value);
 
 #endif //SIMPLE_POLYNOMIAL_REGRESSION_H
