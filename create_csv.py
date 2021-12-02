@@ -8,7 +8,7 @@ def main():
     results = []
     print(global_coef['coef'])
     for i in range(250):
-        x = random.uniform(1, 100)
+        x = random.uniform(1, 10)
         y = fun(x)
         results.append([x, y])
 

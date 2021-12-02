@@ -24,7 +24,7 @@ void print_arr(float *arr, int arr_size);
  * @param j
  * @param arr
  */
-void print_matrix(int i, int j, float *arr[]);
+void print_matrix(int i, int j, int width, float *arr);
 
 /**
  * Gets item from flattened matrix by given `i` and `j`.
@@ -33,7 +33,7 @@ void print_matrix(int i, int j, float *arr[]);
  * @param mx
  * @return
  */
-float get_from_flattened_matrix(int i, int j, float *mx);
+float get_from_flattened_matrix(int i, int j, int width, float *mx);
 
 /**
  * Sets item to flattened matrix by given `i` and `j`.
@@ -42,6 +42,6 @@ float get_from_flattened_matrix(int i, int j, float *mx);
  * @param mx
  * @return
  */
-void set_item_flattened_matrix(int i, int j, float *mx, float value);
+void set_item_flattened_matrix(int i, int j, int width, float *mx, float value);
 
 #endif //POLINOMIAL_REGRESSION_UTILS_H

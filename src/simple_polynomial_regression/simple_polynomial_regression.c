@@ -13,7 +13,7 @@
  * @param degree
  * @return
  */
-float elevate_and_sum_all(const float x[], int size, int degree);
+float elevate_and_sum_all(float *x, int size, int degree);
 /**
  * Specific function to sum y values to inject into augmented matrix.
  * @param y
@@ -46,6 +46,10 @@ void find_coefficients(int arr_size, float *mx, int degree, float *buffer) {
     x = res[0];
     y = res[1];
     print_arr(x, arr_size);
+    printf("\n");
+    print_arr(y, arr_size);
+    printf("\n");
+
     calculate_coef(x, y, degree, arr_size, buffer);
 }
 
@@ -55,7 +59,8 @@ void calculate_coef(float x[], float y[], int degree, int arr_size, float *buffe
     for (i=0; i<quantity; i++){
         for (ii=0; ii < quantity; ii++){
             elevate_by= i + ii;
-            x_result[i][ii] = elevate_and_sum_all(x, arr_size, elevate_by);
+            float value = elevate_and_sum_all(x, arr_size, elevate_by);
+            x_result[i][ii] = value;
         }
         elevate_by = i;
         y_result[0][i] = sum_y(y, x, arr_size, elevate_by);
@@ -63,11 +68,16 @@ void calculate_coef(float x[], float y[], int degree, int arr_size, float *buffe
     x_result[0][0] = (float) arr_size;
 
     printf("\n");
-    for (int i = 0; i < 2; ++i) {
-        printf(", %.2f", x[i]);
+    for (int i = 0; i < 5; ++i) {
+        printf(", %.2f", x_result[1][i]);
     }
 
-    gauss_method(quantity, &x_result[0][0], &y_result[0][0], buffer);
+    printf("\n");
+    for (int i = 0; i < 2; ++i) {
+        printf(", %.2f", y_result[0][i]);
+    }
+
+    gauss_method(quantity, &x_result, &y_result, buffer);
 }
 
 float predict(int arr_size, const float *coefficients, float x_value) {
@@ -86,15 +96,23 @@ float predict(int arr_size, const float *coefficients, float x_value) {
  */
 void find_x_y(int arr_size, float *arr, float *inject_matrix){
     int i;
-    float x[arr_size], y[arr_size], *currentArray ;
+    float x[arr_size], y[arr_size];
     for (i = 0; i < arr_size; i++){
-        x[i] = get_from_flattened_matrix(i,0, arr);
-        y[i] = get_from_flattened_matrix(i,1, arr);
+        float get1 = get_from_flattened_matrix(i, 0, 2, arr);
+        x[i] = get1;
+        float get2 = get_from_flattened_matrix(i, 1, 2, arr);
+        y[i] = get2;
     }
+
+    print_arr(x,arr_size);
+
+
     for (int j = 0; j < arr_size; ++j) {
-        set_item_flattened_matrix(0, j, inject_matrix, x[j]);
-        set_item_flattened_matrix(1, j, inject_matrix, y[j]);
+        set_item_flattened_matrix(0, j, arr_size, inject_matrix, x[j]);
+        set_item_flattened_matrix(1, j, arr_size, inject_matrix, y[j]);
     }
+
+    printf("\n");
 }
 
 
@@ -109,7 +127,7 @@ float sum_y(const float y[], const float x[], int size, int x_degree){
     return res;
 }
 
-float elevate_and_sum_all(const float x[], int size, int degree){
+float elevate_and_sum_all(float *x, int size, int degree){
     float res = 0, temp;
     for (int i = 0; i < size; ++i) {
         temp = x[i];

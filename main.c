@@ -24,7 +24,7 @@ void test_values(int n, int degree, float *arr);
 int main() {
     int degree = 2, average = 1;
     float x_pred = 45;
-    char file_name[50] = "2_gerado.csv";
+    char file_name[50] = "csv_4555.csv";
 
 //    printf("Please, write the name of the file to get data: ");
 //    scanf("%s", file_name);
@@ -42,7 +42,7 @@ int main() {
 
 
     if (average == 0) {
-        test_values(dt.i, degree, (float **) dt.dot);
+        test_values(dt.i, degree,  dt.dot);
     } else {
 //        printf("Now write your X value:\n");
 //        scanf("%f", &x_pred);
@@ -71,9 +71,9 @@ void test_values(int n, int degree, float *arr) {
     printf("\n\n");
 
     for (int i = 0; i < n; ++i) {
-        real_x = get_from_flattened_matrix(i, 0, arr);
+        real_x = get_from_flattened_matrix(i, 0, n ,arr);
 //        real_x = arr[i][0];
-        real_y = get_from_flattened_matrix(i, 1, arr);
+        real_y = get_from_flattened_matrix(i, 1, 1, arr);
 //        real_y = arr[i][1];
         predicted_y = predict(coef_size, coefficients, real_x);
 
