@@ -1,6 +1,7 @@
 //
 // Created by beloin on 01/11/2021.
 //
+#include <stdio.h>
 #include "simple_polynomial_regression.h"
 #include "../gauss/gauss_method.h"
 #include "../utils/utils.h"
@@ -28,7 +29,7 @@ float sum_y(const float y[], const float x[], int size, int x_degree);
  * @param arr
  * @param inject_matrix
  */
-void find_x_y(int arr_size, float **arr, float **inject_matrix);
+void find_x_y(int arr_size, float *arr, float *inject_matrix);
 /**
  * Private function that calculate the coefficients from x,y and degree.
  * @param x
@@ -39,15 +40,16 @@ void find_x_y(int arr_size, float **arr, float **inject_matrix);
  */
 void calculate_coef(float x[], float y[], int degree, int arr_size, float *buffer);
 
-void find_coefficients(int arr_size, float *mx[2], int degree, float *buffer) {
+void find_coefficients(int arr_size, float *mx, int degree, float *buffer) {
     float *x, *y, res[2][arr_size];
-    find_x_y(arr_size, mx, res);
+    find_x_y(arr_size, mx, &res[0][0]);
     x = res[0];
     y = res[1];
+    print_arr(x, arr_size);
     calculate_coef(x, y, degree, arr_size, buffer);
 }
 
-void calculate_coef(float x[], float y[], int degree, int arr_size, float buffer[degree + 1]) {
+void calculate_coef(float x[], float y[], int degree, int arr_size, float *buffer) {
     int quantity = degree+1, i, ii, elevate_by;
     float x_result[quantity][quantity], y_result[1][quantity];
     for (i=0; i<quantity; i++){
@@ -59,10 +61,16 @@ void calculate_coef(float x[], float y[], int degree, int arr_size, float buffer
         y_result[0][i] = sum_y(y, x, arr_size, elevate_by);
     }
     x_result[0][0] = (float) arr_size;
-    gauss_method(quantity, x_result, y_result, buffer);
+
+    printf("\n");
+    for (int i = 0; i < 2; ++i) {
+        printf(", %.2f", x[i]);
+    }
+
+    gauss_method(quantity, &x_result[0][0], &y_result[0][0], buffer);
 }
 
-float predict(int arr_size, float *coefficients, float x_value) {
+float predict(int arr_size, const float *coefficients, float x_value) {
     int i;
     float a, res = 0;
     for (i = 0; i < arr_size; ++i) {
@@ -76,17 +84,16 @@ float predict(int arr_size, float *coefficients, float x_value) {
  * Example:
  * [ [1,6], [2, 7] ] -> x = [1, 2]; y = [6, 7]
  */
-void find_x_y(int arr_size, float **arr, float **inject_matrix){
+void find_x_y(int arr_size, float *arr, float *inject_matrix){
     int i;
     float x[arr_size], y[arr_size], *currentArray ;
     for (i = 0; i < arr_size; i++){
-        currentArray = arr[i];
-        x[i] = currentArray[0];
-        y[i] = currentArray[1];
+        x[i] = get_from_flattened_matrix(i,0, arr);
+        y[i] = get_from_flattened_matrix(i,1, arr);
     }
     for (int j = 0; j < arr_size; ++j) {
-        inject_matrix[0][j] = x[j];
-        inject_matrix[1][j] = y[j];
+        set_item_flattened_matrix(0, j, inject_matrix, x[j]);
+        set_item_flattened_matrix(1, j, inject_matrix, y[j]);
     }
 }
 

@@ -14,7 +14,7 @@
  *
  * @param buffer
  */
-void find_coefficients(int arr_size, float *mx[2], int degree, float *buffer);
+void find_coefficients(int arr_size, float *mx, int degree, float *buffer);
 /**
  * Predict using coefficients and a new x_value
  * Function is something like: F(X) = a0 + a1X + a2*X²
@@ -22,6 +22,6 @@ void find_coefficients(int arr_size, float *mx[2], int degree, float *buffer);
  * @param x_value
  * @return
  */
-float predict(int arr_size, float *coefficients, float x_value);
+float predict(int arr_size, const float *coefficients, float x_value);
 
 #endif //SIMPLE_POLYNOMIAL_REGRESSION_H

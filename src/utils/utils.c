@@ -33,3 +33,13 @@ void print_matrix(int i, int j, float *arr[]){
     printf("\n");
     printf("}");
 }
+
+float get_from_flattened_matrix(int i, int j, float *mx){
+    int res = i+j;
+    return mx[res];
+}
+
+void set_item_flattened_matrix(int i, int j, float *mx, float value){
+    int res = i+j;
+    mx[res] = value;
+}
