@@ -45,11 +45,6 @@ void find_coefficients(int arr_size, float *mx, int degree, float *buffer) {
     find_x_y(arr_size, mx, &res[0][0]);
     x = res[0];
     y = res[1];
-    print_arr(x, arr_size);
-    printf("\n");
-    print_arr(y, arr_size);
-    printf("\n");
-
     calculate_coef(x, y, degree, arr_size, buffer);
 }
 
@@ -66,18 +61,7 @@ void calculate_coef(float x[], float y[], int degree, int arr_size, float *buffe
         y_result[0][i] = sum_y(y, x, arr_size, elevate_by);
     }
     x_result[0][0] = (float) arr_size;
-
-    printf("\n");
-    for (int i = 0; i < 5; ++i) {
-        printf(", %.2f", x_result[1][i]);
-    }
-
-    printf("\n");
-    for (int i = 0; i < 2; ++i) {
-        printf(", %.2f", y_result[0][i]);
-    }
-
-    gauss_method(quantity, &x_result, &y_result, buffer);
+    gauss_method(quantity, &x_result[0][0], &y_result[0][0], buffer);
 }
 
 float predict(int arr_size, const float *coefficients, float x_value) {
@@ -103,16 +87,10 @@ void find_x_y(int arr_size, float *arr, float *inject_matrix){
         float get2 = get_from_flattened_matrix(i, 1, 2, arr);
         y[i] = get2;
     }
-
-    print_arr(x,arr_size);
-
-
     for (int j = 0; j < arr_size; ++j) {
         set_item_flattened_matrix(0, j, arr_size, inject_matrix, x[j]);
         set_item_flattened_matrix(1, j, arr_size, inject_matrix, y[j]);
     }
-
-    printf("\n");
 }
 
 

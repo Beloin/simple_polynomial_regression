@@ -31,14 +31,6 @@ void back_subs(int n, float *mx, float *buffer);
 void gauss_method(int arr_size, float *a, float *b, float *buffer){
     float mx[arr_size][arr_size+1];
     join_mx(arr_size, a, b, &mx[0][0]);
-
-    print_matrix(arr_size, arr_size+1, arr_size+1, mx);
-
-    printf("\n");
-    for (int i = 0; i < 2; ++i) {
-        printf(", %.2f", mx[0][i]);
-    }
-    printf("\n");
     gauss_method_unique_mx(arr_size, &mx[0][0], buffer);
 }
 
