@@ -22,7 +22,7 @@ float polynomial_predict(int n, int degree, float *arr, float x_pred);
 void test_values(int n, int degree, float *arr);
 
 int main() {
-    int degree = 2, average = 0;
+    int degree = 2, average = 1;
     float x_pred = 3.6528;
     char file_name[50] = "csv_4555.csv";
 
